@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>1495 Cypress Pass • Talavera Homes</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#1f1f1f; --nav:#c0802c; --navHover:#000050; --brand:#000050; --paper:#fffdf9;
+      --card:#fff; --line:#eee5d9;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Roboto',sans-serif;margin:0;color:var(--ink);background:var(--paper)}
+
+    header{
+      position:relative;height:90vh;display:flex;align-items:center;justify-content:center;
+      text-align:center;color:#fff;background:#222 center/cover no-repeat;
+    }
+    header::before{content:"";position:absolute;inset:0;background:rgba(0,0,80,.25)}
+    header .content{position:relative;z-index:1;background:rgba(192,128,44,.60);padding:1rem 2rem;border-radius:8px}
+    header a.logo-link{position:absolute;top:20px;left:20px;z-index:2}
+    header img.logo{height:100px;display:block}
+
+    nav{display:flex;flex-wrap:wrap;justify-content:center;background:var(--nav)}
+    nav a{color:#fff;text-decoration:none;padding:1rem;font-weight:700}
+    nav a:hover{background:var(--navHover)}
+
+    .container section{display:none;max-width:1100px;margin:auto;padding:2rem}
+    .container section.active{display:block}
+    h2{color:var(--brand);margin-top:0}
+
+    .pdf-frame{width:100%;height:80vh;border:0;background:#fff;box-shadow:0 0 0 1px #eee inset}
+
+    .contact-links a,.referral-form button{
+      display:inline-block;margin:.5rem 1rem .5rem 0;padding:.75rem 1.25rem;
+      background:var(--brand);color:#fff;text-decoration:none;border-radius:6px;font-weight:700;border:0;cursor:pointer
+    }
+    .contact-links a:hover,.referral-form button:hover{background:var(--nav)}
+
+    footer{background:var(--brand);color:#fff;text-align:center;padding:1rem}
+
+    form input,form textarea{width:100%;padding:.75rem;margin:.75rem 0;border:1px solid #ccc;border-radius:4px}
+
+    /* selections UI */
+    .selections-toolbar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+    .chip{display:inline-block;padding:.4rem .8rem;border-radius:999px;border:1px solid var(--line);background:#fffaf2;font-weight:700;color:var(--brand)}
+    .muted{color:#5a5a5a;font-size:.95rem}
+
+    .gallery{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+    .thumb{position:relative;height:160px;background:#f5f2ed;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .thumb .overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);color:#fff;opacity:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-weight:700;transition:opacity .15s}
+    .card:hover .overlay{opacity:1}
+    .placeholder{font-weight:700;color:var(--brand);text-transform:uppercase;font-size:.95rem;padding:0 10px;text-align:center}
+    .info{padding:12px 14px 14px}
+    .title{font-weight:700;color:var(--brand);margin:0 0 6px}
+    .links a{font-size:.92rem;color:var(--brand);text-decoration:none;border-bottom:1px dashed var(--brand)}
+    .links a:hover{color:var(--nav);border-bottom-color:var(--nav)}
+  </style>
+</head>
+<body>
+
+  <header id="hero">
+    <a href="./" class="logo-link" aria-label="Talavera Homes">
+      <img id="logoImg" src="" alt="Talavera Homes Logo" class="logo">
+    </a>
+    <div class="content">
+      <h1>Welcome to Your New Talavera Home</h1>
+      <p>From our family to yours — thank you for choosing Talavera Homes.</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#handbook" data-section="handbook">Homeowner Handbook</a>
+    <a href="https://www.nationalbuildergroup.com/builder/talavera-homes/service/" target="_self" rel="noopener">Service Request</a>
+    <a href="#selections" data-section="selections">Home Selections</a>
+    <a href="#tips" data-section="tips">Helpful Tips</a>
+    <a href="#referral" data-section="referral">Referral Program</a>
+    <a href="#contact" data-section="contact">Contact Us</a>
+  </nav>
+
+  <div class="container">
+    <section id="handbook" class="active">
+      <h2>Homeowner Handbook</h2>
+      <iframe class="pdf-frame" id="handbookFrame" src="" title="Talavera Homes Homeowner Handbook"></iframe>
+      <p style="margin-top:1rem;">Having trouble viewing?
+        <a id="handbookLink" href="">Open the PDF directly</a>.
+      </p>
+    </section>
+
+    <section id="referral">
+      <h2>Referral Program</h2>
+      <form action="mailto:Eric@Talavera-homes.com,Cindystensrudrealtor@gmail.com?subject=Client%20Website%20Referral" method="post" enctype="text/plain" class="referral-form">
+        <input type="text" name="Your Name" placeholder="Your Name" required>
+        <input type="text" name="Your Address" placeholder="Your Address" required>
+        <input type="text" name="Referral Name" placeholder="Referral's Name" required>
+        <input type="tel" name="Referral Phone" placeholder="Referral's Phone Number" required>
+        <input type="email" name="Referral Email" placeholder="Referral's Email Address" required>
+        <textarea name="Referral Details" placeholder="Describe what your referral is looking for in a home and where they are currently looking" rows="5" required></textarea>
+        <button type="submit">Submit Referral</button>
+      </form>
+    </section>
+
+    <section id="selections">
+      <h2>Home Selections</h2>
+      <div class="selections-toolbar">
+        <span class="chip">Your chosen finishes & fixtures</span>
+        <span class="muted">Hover a tile to see the note. Click “Details” for product info.</span>
+      </div>
+
+      <div id="selectionsGallery" class="gallery"></div>
+    </section>
+
+    <section id="tips"><h2>Helpful Tips</h2><p>Coming soon.</p></section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="contact-links">
+        <a href="tel:2109003353">📞 Call Us</a>
+        <a href="sms:2109003353">💬 Text Us</a>
+        <a href="mailto:service@talavera-homes.com">✉️ Email Us</a>
+      </div>
+      <p><strong>Phone:</strong> 210-900-3353<br>
+         <strong>Text:</strong> 210-900-3353<br>
+         <strong>Email:</strong> service@talavera-homes.com</p>
+    </section>
+  </div>
+
+  <footer>&copy; 2025 Talavera Homes. All rights reserved.</footer>
+
+  <script type="application/json" id="selections-data">[
+    { "name": "Exterior Paint", "note": "Sherwin Williams SW7005 Pure White", "link": "https://www.sherwin-williams.com/en-us/color/color-family/white-paint-colors/sw7005-pure-white", "image": "exterior-paint.jpg" },
+    { "name": "Exterior Trim",  "note": "Sherwin Williams SW7048 Urbane Bronze", "link": "https://www.sherwin-williams.com/en-us/color/color-family/neutral-paint-colors/SW7048-urbane-bronze", "image": "exterior-trim.jpg" },
+    { "name": "Exterior Fascia",  "note": "Sherwin Williams SW7069 Iron Ore", "link": "https://www.sherwin-williams.com/en-us/color/color-family/neutral-paint-colors/sw7069-iron-ore", "image": "exterior-fascia.jpg" },
+    { "name": "Stucco Finish",  "note": "Sto® Finish, Paint & Products", "link": "https://www.morrellmasonry.com/products/san-antonio/sto-finish-paint-products", "image": "stucco.jpg" },
+    { "name": "Interior Paint", "note": "Sherwin Williams SW7029 Agreeable Gray", "link": "https://www.sherwin-williams.com/en-us/color/color-family/neutral-paint-colors/SW7029-agreeable-gray", "image": "interior-paint.jpg" },
+    { "name": "Interior Trim Paint", "note": "Sherwin Williams SW7005 Pure White", "link": "https://www.sherwin-williams.com/en-us/color/color-family/white-paint-colors/sw7005-pure-white", "image": "interior-trim-paint.jpg" },
+    { "name": "Stain", "note": "Sherwin Williams SW3522SS Banyon Brown", "link": "https://www.sherwin-williams.com/homeowners/color/find-and-explore-colors/paint-colors-by-family/SW3522SS-banyan-brown", "image": "stain.jpg" },
+    { "name": "Carpet", "note": "Shaw Venture Total- Windy City", "link": "https://shawpropertysolutions.com/pdp/carpets/venture-tonal/windy-city/pz056-00521", "image": "carpet.jpg" },
+    { "name": "LVP", "note": "Shaw Optimum 512C Plus- Spalted Maple", "link": "https://shawbuilderflooringsf.com/pdp/resilient/optimum-512c-plus/spalted-maple/VE210-02084", "image": "lvp.jpg" },
+    { "name": "Wall tile", "note": "Emser Cabo- Shore", "link": "https://www.emser.com/products/cabo?variant=39461269110897", "image": "Wall-tile.jpg" },
+    { "name": "Backsplash", "note": "Emser Catch Matte- Ice", "link": "https://www.emser.com/products/catch-matte?variant=39763678232689", "image": "Backsplash.jpg" },
+    { "name": "Refrigerator", "note": "GE 27 cu. ft. French Door Refrigerator", "link": "https://www.homedepot.com/p/GE-27-cu-ft-French-Door-Refrigerator-in-Fingerprint-Resistant-Stainless-with-Internal-Dispenser-ENERGY-STAR-GNE27JYMFS/320243591", "image": "refrigerator.jpg" },
+    { "name": "Range", "note": "GE 30\" 4 burner SS Range", "link": "https://www.homedepot.com/p/329011820", "image": "range.jpg" },
+    { "name": "Microwave", "note": "GE 1.6 cu. Ft. SS Microwave", "link": "https://www.homedepot.com/p/204394354", "image": "microwave.jpg" },
+    { "name": "Dishwasher", "note": "GE Built-in Tall Tub SS w/ sanitize", "link": "https://www.homedepot.com/p/317761281", "image": "dishwasher.jpg" },
+    { "name": "Cabinets", "note": "Northpoint- Catalina -Polar White", "link": "https://www.hardwareresources.com/northpoint-cabinets", "image": "cabinets.jpg" },
+    { "name": "Ceiling Fans", "note": "Progress Trevina II 52\" Fan", "link": "https://progresslighting.com/products/trevina-ii-collection-52in-three-blade-ceiling-fan-p2553", "image": "fans.jpg" },
+    { "name": "Vanity Lights", "note": "Progress Merry Matte Black", "link": "https://progresslighting.com/products/merry-collection-three-light-etched-white-glass-bath-vanity-wall-light-p300329", "image": "vanity-light.jpg" },
+    { "name": "Exterior Lights", "note": "Progress Whitmore Matte Black", "link": "https://progresslighting.com/products/whitmire-collection-one-light-with-clear-seeded-glass-outdoor-wall-lantern-light-p560282", "image": "exterior-lights.jpg" },
+    { "name": "Dining Room Light", "note": "Progress Replay", "link": "https://progresslighting.com/products/replay-collection-five-light-etched-white-glass-chandelier-light-p4319", "image": "dining-room-light.jpg" },
+    { "name": "Front Door Hardware", "note": "Schlage Century with Latitude Handle", "link": "https://www.homedepot.com/p/319938200", "image": "front-door-hardware.jpg" },
+    { "name": "Door Hardware", "note": "Schlage Latitude Matte Black", "link": "https://www.homedepot.com/p/310640472", "image": "door-hardware.jpg" },
+    { "name": "Towel Ring", "note": "Gatco Latitude II -Matte Black", "link": "https://www.homedepot.com/p/300147451", "image": "towel-ring.jpg" },
+    { "name": "Towel Bar", "note": "Glacier Bay Dorind- Matte Black", "link": "https://www.homedepot.com/p/322302855", "image": "towel-bar.jpg" },
+    { "name": "Cabinet Hardware", "note": "5-1/6\" Matte Black Cabinet Pull", "link": "https://www.homedepot.com/p/321239025", "image": "cabinet-hardware.jpg" }
+  ]</script>
+
+  <script>
+    function loadBestImage(imgEl, desiredPath, fallbackLabel){
+      if(!desiredPath){
+        const holder=document.createElement('div');
+        holder.className='placeholder';
+        holder.textContent=fallbackLabel||'Image';
+        imgEl.replaceWith(holder);
+        return;
+      }
+      const tries=[desiredPath,"selections/"+desiredPath];
+      let i=0;
+      function next(){
+        if(i>=tries.length){
+          const holder=document.createElement('div');
+          holder.className='placeholder';
+          holder.textContent=fallbackLabel||'Image';
+          imgEl.replaceWith(holder);
+          return;
+        }
+        imgEl.src=tries[i++];
+        imgEl.onerror=next;
+      }
+      next();
+    }
+
+    function setActive(id){
+      document.querySelectorAll('.container section').forEach(s=>s.classList.remove('active'));
+      const el=document.getElementById(id);
+      if(el) el.classList.add('active');
+    }
+
+    function showSection(id){
+      setActive(id);
+      if(history.pushState) history.pushState(null,"","#"+id);
+    }
+
+    function renderSelections(items){
+      const gallery=document.getElementById('selectionsGallery');
+      gallery.innerHTML='';
+      items.forEach(it=>{
+        const name=it.name||'Selection';
+        const note=it.note||'';
+        let link=(it.link||'').trim();
+        if(link && !/^https?:\/\//.test(link)) link='https://'+link;
+
+        const card=document.createElement('article');card.className='card';
+        if(link) card.addEventListener('click',()=>window.open(link,'_blank','noopener'));
+
+        const thumb=document.createElement('div');thumb.className='thumb';
+        const img=document.createElement('img');img.loading='lazy';img.alt=name;
+        thumb.appendChild(img);
+        const ov=document.createElement('div');ov.className='overlay';ov.textContent=note||'Details';
+        thumb.appendChild(ov);
+        card.appendChild(thumb);
+
+        const info=document.createElement('div');info.className='info';
+        info.innerHTML=`<p class="title">${name}</p>${link?`<div class="links"><a href="${link}" target="_blank" rel="noopener">Details</a></div>`:''}`;
+        card.appendChild(info);
+        gallery.appendChild(card);
+
+        loadBestImage(img,(it.image||'').trim()||name,name);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('a[data-section]').forEach(a=>{
+        a.addEventListener('click',e=>{
+          e.preventDefault();
+          showSection(a.getAttribute('data-section'));
+        });
+      });
+
+      const initial=(location.hash && document.getElementById(location.hash.slice(1)))?location.hash.slice(1):'handbook';
+      setActive(initial);
+
+      const pdfName="Talavera Homes Homeowner Handbook.pdf";
+      const pdfURI=encodeURI(pdfName);
+      document.getElementById('handbookFrame').src=pdfURI+'#view=FitH&toolbar=1&navpanes=0';
+      document.getElementById('handbookLink').href=pdfURI;
+
+      loadBestImage(document.getElementById('logoImg'),'Gold_Talavera_Logo.png','Talavera Homes');
+
+      const hero=document.getElementById('hero');
+      const test=new Image();
+      test.onload=()=>hero.style.backgroundImage=`url('195410.jpeg')`;
+      test.src='195410.jpeg';
+
+      let items=[];
+      try{items=JSON.parse(document.getElementById('selections-data').textContent.trim());}catch(e){items=[];}
+      renderSelections(Array.isArray(items)?items:[]);
+    });
+  </script>
+</body>
+</html>
